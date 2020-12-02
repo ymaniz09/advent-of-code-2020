@@ -5,30 +5,35 @@ import util.getAllPairs
 import util.getAllTriples
 
 fun main() {
-    println(Day01().solve())
-    println(Day01().solve2())
+    println(Day01(1).solvePartOne())
+    println(Day01(1).solvePartTwo())
 }
 
-class Day01: Puzzle() {
+class Day01(
+    day: Int,
+    public: Boolean = false
+) : Puzzle<Int>(day, public) {
 
-    fun solve(): Int {
+    override fun readInput() {
+        input = rawInput.map { it.toInt() }
+    }
 
-        getIntList().getAllPairs { first, second ->
+    fun solvePartOne(): Int {
+        readInput()
+        input.getAllPairs { first, second ->
             if (first + second == 2020) return first * second
         }
 
         throw IllegalArgumentException("Input is not valid")
     }
 
-    fun solve2(): Int {
-        getIntList().getAllTriples { first, second, third ->
+    fun solvePartTwo(): Int {
+        readInput()
+        input.getAllTriples { first, second, third ->
             if (first + second + third == 2020) return first * second * third
 
         }
 
         throw IllegalArgumentException("Input is not valid")
     }
-
-    private fun getIntList() = readInput("day01.txt").map { it.toInt() }
-
 }
