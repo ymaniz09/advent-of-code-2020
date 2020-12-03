@@ -16,15 +16,32 @@ class Day3(
         input = rawInput
     }
 
-    fun solvePartOne(): Int {
+    fun solvePartOne(): Long {
         readInput()
         return stepSlopeDown(3, 1)
     }
 
-    private fun stepSlopeDown(toRight: Int, toBottom: Int): Int {
+    fun solvePartTwo(): Long {
+        readInput()
+        val slopes = listOf(
+            1 to 1,
+            3 to 1,
+            5 to 1,
+            7 to 1,
+            1 to 2
+        )
+
+        val foundTrees = slopes.map {
+            stepSlopeDown(it.first, it.second)
+        }
+
+        return foundTrees.reduce(Long::times)
+    }
+
+    private fun stepSlopeDown(toRight: Int, toBottom: Int): Long {
         val height = input.size
         val width = input.first().length
-        var trees = 0
+        var trees = 0L
 
         var x = 0
         var y = 0
@@ -39,10 +56,5 @@ class Day3(
         }
 
         return trees
-    }
-
-    fun solvePartTwo(): Int {
-        readInput()
-        return 0
     }
 }
