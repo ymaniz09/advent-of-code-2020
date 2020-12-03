@@ -1,16 +1,18 @@
-package day3
+package year2020.day3
 
 import Puzzle
+import java.time.Year
 
 fun main() {
-    println(Day3(3).solvePartOne())
-    println(Day3(3).solvePartTwo())
+    println(Day3(2020, 3).solvePartOne())
+    println(Day3(2020, 3).solvePartTwo())
 }
 
 class Day3(
+    year: Int,
     day: Int,
     public: Boolean = false
-) : Puzzle<String>(day, public) {
+) : Puzzle<String>(year, day, public) {
 
     override fun readInput() {
         input = rawInput

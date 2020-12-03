@@ -1,16 +1,17 @@
-package day2
+package year2020.day2
 
 import Puzzle
 
 fun main() {
-    println(Day2(2).solvePartOne())
-    println(Day2(2).solvePartTwo())
+    println(Day2(2020,2).solvePartOne())
+    println(Day2(2020, 2).solvePartTwo())
 }
 
 class Day2(
+    year: Int,
     day: Int,
     public: Boolean = false
-) : Puzzle<Password>(day, public) {
+) : Puzzle<Password>(year, day, public) {
 
     override fun readInput() {
         input = rawInput.map { rawInput ->
