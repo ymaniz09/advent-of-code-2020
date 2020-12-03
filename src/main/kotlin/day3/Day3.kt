@@ -18,6 +18,10 @@ class Day3(
 
     fun solvePartOne(): Int {
         readInput()
+        return stepSlopeDown(3, 1)
+    }
+
+    private fun stepSlopeDown(toRight: Int, toBottom: Int): Int {
         val height = input.size
         val width = input.first().length
         var trees = 0
@@ -29,8 +33,8 @@ class Day3(
             if (input[y][x] == '#')
                 trees++
 
-            x = (x + 3) % width
-            y += 1
+            x = (x + toRight) % width
+            y += toBottom
 
         }
 
