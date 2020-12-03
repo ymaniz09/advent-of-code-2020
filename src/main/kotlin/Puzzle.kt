@@ -1,4 +1,4 @@
-import day01.readRawInput
+import day1.readRawInput
 
 abstract class Puzzle<T>(private val day: Int, private val public: Boolean = false) {
     lateinit var input: List<T>
@@ -9,6 +9,6 @@ abstract class Puzzle<T>(private val day: Int, private val public: Boolean = fal
 
     private fun buildInputFileName(): String {
         val suffix = if (public) "_public" else ""
-        return "day%02d$suffix.txt".format(day)
+        return "day$day$suffix.txt"
     }
 }

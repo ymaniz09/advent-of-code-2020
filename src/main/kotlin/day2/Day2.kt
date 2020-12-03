@@ -1,13 +1,13 @@
-package day02
+package day2
 
 import Puzzle
 
 fun main() {
-    println(Day02(2).solvePartOne())
-    println(Day02(2).solvePartTwo())
+    println(Day2(2).solvePartOne())
+    println(Day2(2).solvePartTwo())
 }
 
-class Day02(
+class Day2(
     day: Int,
     public: Boolean = false
 ) : Puzzle<Password>(day, public) {

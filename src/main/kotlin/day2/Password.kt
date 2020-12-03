@@ -1,4 +1,4 @@
-package day02
+package day2
 
 data class Password(
     val minimum: Int,

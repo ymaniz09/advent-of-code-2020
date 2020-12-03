@@ -1,15 +1,15 @@
-package day01
+package day1
 
 import Puzzle
 import util.getAllPairs
 import util.getAllTriples
 
 fun main() {
-    println(Day01(1).solvePartOne())
-    println(Day01(1).solvePartTwo())
+    println(Day1(1).solvePartOne())
+    println(Day1(1).solvePartTwo())
 }
 
-class Day01(
+class Day1(
     day: Int,
     public: Boolean = false
 ) : Puzzle<Int>(day, public) {
