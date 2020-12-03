@@ -31,11 +31,9 @@ class Day3(
             1 to 2
         )
 
-        val foundTrees = slopes.map {
+        return slopes.map {
             stepSlopeDown(it.first, it.second)
-        }
-
-        return foundTrees.reduce(Long::times)
+        }.reduce(Long::times)
     }
 
     private fun stepSlopeDown(toRight: Int, toBottom: Int): Long {
@@ -52,7 +50,6 @@ class Day3(
 
             x = (x + toRight) % width
             y += toBottom
-
         }
 
         return trees
