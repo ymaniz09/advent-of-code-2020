@@ -1,6 +1,7 @@
 package year2019.day1
 
 import Puzzle
+import util.sumByLong
 
 fun main() {
     println(Day1(2019, 1).solvePartOne())
@@ -11,21 +12,26 @@ class Day1(
     year: Int,
     day: Int,
     public: Boolean = false
-) : Puzzle<Int>(year, day, public) {
+) : Puzzle<Long>(year, day, public) {
 
     override fun readInput() {
-        input = rawInput.map { it.toInt() }
+        input = rawInput.map { it.toLong() }
     }
 
     fun solvePartOne(): Long {
         readInput()
-        return input.map { ((it / 3) - 2).toLong()  }.sum()
+        return input.sumByLong { it.getFuelRequirements() }
     }
 
     fun solvePartTwo(): Long {
         readInput()
-
-
-        return 0
+        return input.sumByLong { it.getFullFuelRequirements() }
     }
+}
+
+fun Long.getFuelRequirements() = this / 3 - 2
+
+fun Long.getFullFuelRequirements(): Long {
+    val requirements = getFuelRequirements()
+    return if (requirements <= 0) 0 else requirements + requirements.getFullFuelRequirements()
 }
