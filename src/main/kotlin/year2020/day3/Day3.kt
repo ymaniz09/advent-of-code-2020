@@ -1,7 +1,6 @@
 package year2020.day3
 
 import Puzzle
-import java.time.Year
 
 fun main() {
     println(Day3(2020, 3).solvePartOne())
