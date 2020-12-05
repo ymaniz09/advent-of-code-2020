@@ -2,6 +2,7 @@ package year2020.day4
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import year2020.day4.PassportValidator.isValid
 
 internal class Day4Test {
     @Test
@@ -30,7 +31,7 @@ internal class Day4Test {
 
         val firstEntry = puzzle.input.first()
 
-        assertTrue(puzzle.isValid(firstEntry))
+        assertTrue(isValid(firstEntry))
     }
 
     @Test
@@ -58,7 +59,7 @@ internal class Day4Test {
 
         val secondEntry = puzzle.input[1]
 
-        assertFalse(puzzle.isValid(secondEntry))
+        assertFalse(isValid(secondEntry))
     }
 
     @Test
@@ -86,7 +87,7 @@ internal class Day4Test {
 
         val thirdEntry = puzzle.input[2]
 
-        assertTrue(puzzle.isValid(thirdEntry))
+        assertTrue(isValid(thirdEntry))
     }
 
     @Test
@@ -113,7 +114,7 @@ internal class Day4Test {
 
         val lastEntry = puzzle.input.last()
 
-        assertFalse(puzzle.isValid(lastEntry))
+        assertFalse(isValid(lastEntry))
     }
 
     @Test
@@ -124,5 +125,10 @@ internal class Day4Test {
     @Test
     fun `should solve the part one for the problem input`() {
         assertEquals(190, Day4(2020, 4).solvePartOne())
+    }
+
+    @Test
+    fun `should solve the part two for the problem input`() {
+        assertEquals(121, Day4(2020, 4).solvePartTwo())
     }
 }

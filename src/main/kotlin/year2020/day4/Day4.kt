@@ -2,6 +2,9 @@ package year2020.day4
 
 import Puzzle
 import util.readInputText
+import year2020.day4.InputReader.buildAttributesMap
+import year2020.day4.PassportValidator.isValid
+import year2020.day4.PassportValidator.validateStrictRules
 import java.lang.System.lineSeparator
 
 fun main() {
@@ -15,33 +18,23 @@ class Day4(
     public: Boolean = false
 ) : Puzzle<Map<String, String>>(year, day, public) {
 
-    private val requiredFields: Set<String> = setOf("byr", "iyr", "eyr", "hcl", "ecl", "pid", "hgt")
-
     override fun readInput() {
-
         val stringInput = readInputText(inputFileName)
         val split = stringInput.split(lineSeparator() + lineSeparator())
         val clean = split.map { it.replace(lineSeparator(), " ") }
 
         input = clean.map {
-            it.split(" ").map { attributes ->
-                val (key, value) = attributes.split(":")
-                key to value
-            }.toMap()
+            buildAttributesMap(it)
         }.toList()
-    }
-
-    fun isValid(passport: Map<String, String>): Boolean {
-        return requiredFields.intersect(passport.keys) == requiredFields
     }
 
     fun solvePartOne(): Int {
         readInput()
-
         return input.count { isValid(it) }
     }
 
     fun solvePartTwo(): Int {
-        return 0
+        readInput()
+        return input.count { validateStrictRules(it) }
     }
 }
