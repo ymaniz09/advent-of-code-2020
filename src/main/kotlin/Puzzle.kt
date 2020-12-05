@@ -2,7 +2,7 @@ import util.readRawInput
 
 abstract class Puzzle<T>(private val year: Int, private val day: Int, private val public: Boolean = false) {
     lateinit var input: List<T>
-    private val inputFileName = buildInputFileName()
+    val inputFileName = buildInputFileName()
     val rawInput = readRawInput(inputFileName)
 
     abstract fun readInput()
