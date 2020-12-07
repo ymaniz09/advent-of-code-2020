@@ -17,3 +17,5 @@ inline fun <T> List<T>.getAllTriples(triple: (T, T, T) -> Unit) {
         }
     }
 }
+
+fun  List<Int>.findMissingNumber() = this.sorted().zipWithNext().first { it.first + 1 != it.second }.first + 1

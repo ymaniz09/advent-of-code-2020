@@ -13,4 +13,9 @@ internal class Day5Test {
     fun `should solve the part one for the problem input`() {
         assertEquals(835, Day5(2020, 5).solvePartOne())
     }
+
+    @Test
+    fun `should solve the part two for the problem input`() {
+        assertEquals(649, Day5(2020, 5).solvePartTwo())
+    }
 }

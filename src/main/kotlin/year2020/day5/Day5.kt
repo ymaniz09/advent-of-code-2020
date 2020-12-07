@@ -1,6 +1,7 @@
 package year2020.day5
 
 import Puzzle
+import util.findMissingNumber
 
 fun main() {
     println(Day5(2020, 5).solvePartOne())
@@ -24,6 +25,10 @@ class Day5(
     }
 
     fun solvePartTwo(): Int {
-        TODO("Not yet implemented")
+        readInput()
+
+        return input.map {
+            SeatDecoder.getDecimalSeatPosition(it)
+        }.toList().findMissingNumber()
     }
 }
