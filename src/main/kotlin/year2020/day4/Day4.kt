@@ -1,7 +1,7 @@
 package year2020.day4
 
 import Puzzle
-import util.readInputText
+import util.readNewLineSeparatedInputText
 import year2020.day4.InputReader.buildAttributesMap
 import year2020.day4.PassportValidator.isValid
 import year2020.day4.PassportValidator.validateStrictRules
@@ -19,13 +19,10 @@ class Day4(
 ) : Puzzle<Map<String, String>>(year, day, public) {
 
     override fun readInput() {
-        val stringInput = readInputText(inputFileName)
-        val split = stringInput.split(lineSeparator() + lineSeparator())
-        val clean = split.map { it.replace(lineSeparator(), " ") }
-
-        input = clean.map {
-            buildAttributesMap(it)
-        }.toList()
+        input = readNewLineSeparatedInputText(inputFileName)
+            .removeLineSeparators().map {
+                buildAttributesMap(it)
+            }
     }
 
     fun solvePartOne(): Int {
@@ -37,4 +34,6 @@ class Day4(
         readInput()
         return input.count { validateStrictRules(it) }
     }
+
+    private fun Iterable<String>.removeLineSeparators() = this.map { it.replace(lineSeparator(), " ") }
 }
