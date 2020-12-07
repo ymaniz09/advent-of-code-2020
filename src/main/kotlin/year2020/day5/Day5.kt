@@ -12,23 +12,18 @@ class Day5(
     year: Int,
     day: Int,
     public: Boolean = false
-) : Puzzle<String>(year, day, public) {
+) : Puzzle<Int>(year, day, public) {
     override fun readInput() {
-        input = rawInput
+        input = rawInput.map { SeatDecoder.getDecimalSeatPosition(it) }
     }
 
     fun solvePartOne(): Int {
         readInput()
-        return input.map {
-            SeatDecoder.getDecimalSeatPosition(it)
-        }.toList().maxOrNull() ?: throw IllegalArgumentException("Input is not valid")
+        return input.maxOrNull() ?: throw IllegalArgumentException("Input is not valid")
     }
 
     fun solvePartTwo(): Int {
         readInput()
-
-        return input.map {
-            SeatDecoder.getDecimalSeatPosition(it)
-        }.toList().findMissingNumber()
+        return input.findMissingNumber()
     }
 }
