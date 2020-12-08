@@ -15,8 +15,8 @@ class Day6(
 ) : Puzzle<List<Set<Char>>>(year, day, public) {
     override fun readInput() {
         input = readNewLineSeparatedInputText(inputFileName).map {
-                it.split("\n").filter(String::isNotBlank).map(String::toSet)
-            }
+            it.split("\n").filter(String::isNotBlank).map(String::toSet)
+        }
     }
 
     fun solvePartOne(): Int {
@@ -28,6 +28,10 @@ class Day6(
     }
 
     fun solvePartTwo(): Int {
-        TODO("Not yet implemented")
+        readInput()
+
+        return input.sumBy {
+            it.reduce { acc, set -> acc.intersect(set) }.size
+        }
     }
 }
