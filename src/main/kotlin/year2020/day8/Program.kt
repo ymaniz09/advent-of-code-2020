@@ -4,10 +4,10 @@ class Program(private val instructions: List<Instruction>) {
     private var accumulator: Int = 0
     private var pc: Int = 0
 
-    fun runUntilFirstLoop(): Int {
+    fun runUntilFirstLoop(): ProgramResult {
         val executed = mutableSetOf<Int>()
 
-        while (pc !in executed) {
+        while (pc !in executed && pc < instructions.size) {
             executed.add(pc)
 
             val (instruction, value) = instructions[pc]
@@ -19,7 +19,7 @@ class Program(private val instructions: List<Instruction>) {
             }
         }
 
-        return accumulator
+        return ProgramResult(programCounter = pc, accumulator = accumulator)
     }
 
     private fun applyNop(value: Int) {
