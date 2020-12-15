@@ -9,6 +9,6 @@ abstract class Puzzle<T>(private val year: Int, private val day: Int, private va
 
     private fun buildInputFileName(): String {
         val suffix = if (public) "_public" else ""
-        return "year${year}/day$day$suffix.txt"
+        return "year${year}/day%02d$suffix.txt".format(day)
     }
 }
